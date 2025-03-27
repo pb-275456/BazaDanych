@@ -7,21 +7,20 @@ using System.Threading.Tasks;
 
 namespace BazaDanych
 {
-    class TestApi
+    internal class TestApi
     {
         public HttpClient client;
         public async Task GetData()
         {
             client = new HttpClient();
-            string call = @"https://api.disneyapi.dev/character/308";
+            string apikey = "c4bef0bdf1833ada4944cd1a8c720578";
+            string city = "London";
+            string call = @$"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apikey}&units=metric";
             string response = await client.GetStringAsync(call);
-            Console.WriteLine(response);
-            //List<CharacterData> data = JsonSerializer.Deserialize<List<CharacterData>>(response);
-            ApiResponse x = JsonSerializer.Deserialize<ApiResponse>(response);
-            foreach (var character in x.data)
-            {
-                Console.WriteLine(character);
-            }
+            WeatherData data = JsonSerializer.Deserialize<WeatherData>(response); 
+            //Console.WriteLine(response);
+
+            Console.WriteLine(data);
         }
 
     }
