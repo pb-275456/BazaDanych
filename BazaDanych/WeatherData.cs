@@ -10,10 +10,11 @@ namespace BazaDanych
     {
         public Main main { get; set; }
         public string name { get; set; }
+        public Coord coord { get; set; }
 
         public override string ToString()
         {
-            return $"City: {name}, {main}";
+            return $"City: {name}\n{main}\n{coord}";
         }
     }
 
@@ -27,6 +28,17 @@ namespace BazaDanych
         public override string ToString()
         {
             return $"temp: {temp}, feels like: {feels_like}, pressure: {pressure}, humidity: {humidity}";
+        }
+    }
+
+    internal class Coord
+    {
+        public double lon { get; set; }
+        public double lat { get; set; }
+
+        public override string ToString()
+        {
+            return $"coordinates - lon: {lon}, lat: {lat}";
         }
     }
 
