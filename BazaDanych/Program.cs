@@ -4,8 +4,9 @@
     {
         static void Main(string[] args)
         {
-            TestApi t = new TestApi();
-            t.GetData().Wait();
+            Api t = new Api();
+            t.GetData("London").Wait();
+
         }
     }
 }
