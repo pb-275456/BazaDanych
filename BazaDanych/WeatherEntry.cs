@@ -8,7 +8,7 @@ namespace BazaDanych
 {
     class WeatherEntry
     {
-        public required int Id { get; set; }
+        public int Id { get; set; }
         public required DateTime Date { get; set; }
         public required double temp { get; set; }
         public double feels_like { get; set; }

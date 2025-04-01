@@ -12,7 +12,7 @@ namespace BazaDanych
         public required string name { get; set; }
         public double? lon { get; set; }
         public double? lat { get; set; }
-        public required List<WeatherEntry> WeatherEntries { get; set; }
+        public List<WeatherEntry> WeatherEntries { get; set; }
 
         public override string ToString()
         {
