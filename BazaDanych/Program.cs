@@ -6,9 +6,9 @@
         {
             //Api t = new Api();
             Controller c = new Controller();
-            //c.GetData("London").Wait();
+            //c.GetData("Paris").Wait();
             //c.addEntry();
-            //c.getWeatherByCity("London");
+            //c.getWeatherByCity("Paris");
         }
     }
 }

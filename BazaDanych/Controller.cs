@@ -1,5 +1,7 @@
-﻿using System.Text.Json;
+﻿using System.Runtime.CompilerServices;
+using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
+[assembly: InternalsVisibleTo("Aplikacja")]
 
 namespace BazaDanych
 {
@@ -29,16 +31,21 @@ namespace BazaDanych
             //return data;
         }
 
-        public void getWeatherByCity(string cityName) //pobieranie pogody z danego miasta
+        public List<WeatherEntry> getWeatherByCity(string cityName) //pobieranie pogody z danego miasta
         {
             var city = database.Cities.Include(c => c.WeatherEntries).FirstOrDefault(c => c.name == cityName);
-            if(city != null)
+            if(city!=null)
             {
-                foreach (var weatherEntry in city.WeatherEntries)
-                {
-                    Console.WriteLine($"Date: {weatherEntry.Date}, Temperature: {weatherEntry.temp}°C");
-                }
+                return city.WeatherEntries.ToList();
             }
+            return new List<WeatherEntry>();
+        }
+
+        public List<WeatherEntry> getWeatherForCityDate(string cityName, DateTime date)
+        {
+            var weather = database.WeatherEntries.Where(w => w.City.name == cityName && w.date == date).ToList();
+
+            return weather;
         }
 
         public void addEntry()
@@ -55,7 +62,7 @@ namespace BazaDanych
             var weather = new WeatherEntry
             {
                 CityId = city.Id,
-                Date = DateTime.Now.Date,
+                date = DateTime.Now.Date,
                 temp = data.main.temp,
                 feels_like = data.main.feels_like,
                 humidity = data.main.humidity,
@@ -65,5 +72,11 @@ namespace BazaDanych
             database.WeatherEntries.Add(weather);
             database.SaveChanges();
         }
+
+        public bool CheckEntryInDatabase(string cityName, DateTime date)
+        {
+            return database.WeatherEntries.Any(w => w.City.name == cityName && w.date.Date == date.Date);
+        }
+
     }
 }

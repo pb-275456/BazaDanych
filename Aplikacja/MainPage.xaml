@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:BazaDanych="clr-namespace:BazaDanych;assembly=BazaDanych"
+             x:Class="Aplikacja.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Source="sun.png"
+                HeightRequest="150"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <ListView x:Name="WeatherListView" IsVisible="False" HeightRequest="300">
+      
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Spacing="5" Orientation="Vertical">
+
+                                <!--nazwa miasta i jego coord-->
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="{Binding City.name}" FontAttributes="Bold" FontSize="Small" TextColor="Black"/>
+                                    <Label Text="lon: " FontSize="Small" TextColor="Gray"/>
+                                    <Label Text="{Binding City.lon}" FontSize="Small" TextColor="Gray"/>
+                                    <Label Text="lat: " FontSize="Small" TextColor="Gray"/>
+                                    <Label Text="{Binding City.lat}" FontSize="Small" TextColor="Gray"/>
+                                </HorizontalStackLayout>
+                                 <!--informacje o pogodzie-->
+                                <StackLayout Orientation="Vertical" Spacing="5">
+                                    <!-- date -->
+                                    <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Date:" FontSize="Small"/>
+                                    <Label Text="{Binding date}" FontSize="Small" TextColor="Black"/>
+                                    </HorizontalStackLayout>
+                                    
+                                    <!-- temp -->
+                                    <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Temperature:" FontSize="Small"/>
+                                    <Label Text="{Binding temp}" FontSize="Small" TextColor="Black"/>
+                                    </HorizontalStackLayout>
+
+                                    <!-- feels like -->
+                                     <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Feels Like:" FontSize="Small"/>
+                                    <Label Text="{Binding feels_like}" FontSize="Small" TextColor="Black"/>
+                                    </HorizontalStackLayout>
+
+                                        <!-- humidity -->
+                                    <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Humidity:" FontSize="Small"/>
+                                    <Label Text="{Binding humidity}" FontSize="Small" TextColor="Black"/>
+                                    </HorizontalStackLayout>
+
+                                    <!-- pressure -->
+                                    <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Pressure:" FontSize="Small"/>
+                                    <Label Text="{Binding pressure}" FontSize="Small" TextColor="Black"/>
+                                    </HorizontalStackLayout>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+
+            <Entry 
+               x:Name="CityInput"
+               Placeholder="Enter city name"
+               HorizontalOptions="CenterAndExpand" 
+               IsVisible="True"
+               Keyboard="Plain" HeightRequest="10" />
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button
+                    x:Name="GetWeatherButton"
+                    Text="Get Todays Weather" 
+                    Clicked="OnGetWeatherClicked"
+                    />
+
+                <Button
+                    x:Name="GetAllWeatherButton"
+                    Text="Get All Weather" 
+                    Clicked="OnGetAllWeatherClicked"
+                    />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
