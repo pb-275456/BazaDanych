@@ -7,14 +7,14 @@
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
-            Spacing="25">
+            Spacing="20">
             <Image
                 Source="sun.png"
-                HeightRequest="150"
+                HeightRequest="130"
                 Aspect="AspectFit"
                 SemanticProperties.Description="dot net bot in a race car number eight" />
 
-            <ListView x:Name="WeatherListView" IsVisible="False" HeightRequest="300">
+            <ListView x:Name="WeatherListView" IsVisible="False" HeightRequest="200">
       
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -33,35 +33,34 @@
                                 <StackLayout Orientation="Vertical" Spacing="5">
                                     <!-- date -->
                                     <HorizontalStackLayout Spacing="5">
-                                    <Label Text="Date:" FontSize="Small"/>
-                                    <Label Text="{Binding date}" FontSize="Small" TextColor="Black"/>
+                                        <Label Text="Date:" FontSize="Small"/>
+                                        <Label Text="{Binding date}" FontSize="Small" TextColor="Black"/>
                                     </HorizontalStackLayout>
-                                    
+
                                     <!-- temp -->
                                     <HorizontalStackLayout Spacing="5">
-                                    <Label Text="Temperature:" FontSize="Small"/>
-                                    <Label Text="{Binding temp}" FontSize="Small" TextColor="Black"/>
+                                        <Label Text="Temperature:" FontSize="Small"/>
+                                        <Label Text="{Binding temp}" FontSize="Small" TextColor="Black"/>
                                     </HorizontalStackLayout>
 
                                     <!-- feels like -->
-                                     <HorizontalStackLayout Spacing="5">
-                                    <Label Text="Feels Like:" FontSize="Small"/>
-                                    <Label Text="{Binding feels_like}" FontSize="Small" TextColor="Black"/>
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="Feels Like:" FontSize="Small"/>
+                                        <Label Text="{Binding feels_like}" FontSize="Small" TextColor="Black"/>
                                     </HorizontalStackLayout>
 
-                                        <!-- humidity -->
+                                    <!-- humidity -->
                                     <HorizontalStackLayout Spacing="5">
-                                    <Label Text="Humidity:" FontSize="Small"/>
-                                    <Label Text="{Binding humidity}" FontSize="Small" TextColor="Black"/>
+                                        <Label Text="Humidity:" FontSize="Small"/>
+                                        <Label Text="{Binding humidity}" FontSize="Small" TextColor="Black"/>
                                     </HorizontalStackLayout>
 
                                     <!-- pressure -->
                                     <HorizontalStackLayout Spacing="5">
-                                    <Label Text="Pressure:" FontSize="Small"/>
-                                    <Label Text="{Binding pressure}" FontSize="Small" TextColor="Black"/>
+                                        <Label Text="Pressure:" FontSize="Small"/>
+                                        <Label Text="{Binding pressure}" FontSize="Small" TextColor="Black"/>
                                     </HorizontalStackLayout>
                                 </StackLayout>
-
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

@@ -43,7 +43,7 @@ namespace BazaDanych
 
         public List<WeatherEntry> getWeatherForCityDate(string cityName, DateTime date)
         {
-            var weather = database.WeatherEntries.Where(w => w.City.name == cityName && w.date == date).ToList();
+            var weather = database.WeatherEntries.Include(w => w.City).Where(w => w.City.name == cityName && w.date == date).ToList();
 
             return weather;
         }
