@@ -32,7 +32,7 @@ namespace BazaDanych.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    date = table.Column<DateTime>(type: "TEXT", nullable: false),
                     temp = table.Column<double>(type: "REAL", nullable: false),
                     feels_like = table.Column<double>(type: "REAL", nullable: false),
                     pressure = table.Column<double>(type: "REAL", nullable: false),

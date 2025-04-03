@@ -47,7 +47,7 @@ namespace BazaDanych.Migrations
                     b.Property<int>("CityId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("date")
                         .HasColumnType("TEXT");
 
                     b.Property<double>("feels_like")

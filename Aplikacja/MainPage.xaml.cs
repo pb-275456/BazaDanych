@@ -1,4 +1,5 @@
-﻿using BazaDanych;
+﻿using System.Threading.Tasks;
+using BazaDanych;
 
 namespace Aplikacja
 {
@@ -75,8 +76,6 @@ namespace Aplikacja
                 return;
             }
 
-            //jak nie ma danych to pobieramy i dodajemy
-            
             var entries = controller.getWeatherByCity(cityName);
 
             if (entries.Any())
@@ -90,6 +89,18 @@ namespace Aplikacja
                 WeatherListView.IsVisible = false;
                 await DisplayAlert("No Data", "No weather data available for the selected city.", "OK");
             }
+        }
+
+        private void OnRemoveCityClicked(object sender, EventArgs e)
+        {
+            var cityName = CityInput.Text;
+            if (!validateCityInput(cityName))
+            {
+                return;
+            }
+
+            controller.RemoveCity(cityName);
+            WeatherListView.IsVisible = false;
         }
 
     }

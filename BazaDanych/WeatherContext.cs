@@ -17,6 +17,13 @@ namespace BazaDanych
             Database.EnsureCreated();
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<WeatherEntry>().HasOne(w => w.City).WithMany(c => c.WeatherEntries).HasForeignKey(w => w.CityId)
+                .OnDelete(DeleteBehavior.Cascade);
+            //ustawienie usuwania kaskadowego, razem z miastem usuwaja sie wszystkie wpisy
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlite(@" Data Source = Weather .db");

@@ -81,9 +81,14 @@ namespace BazaDanych
             return database.WeatherEntries.Any(w => w.City.name == cityName && w.date == date);
         }
 
-        public void RemoveCity()
+        public void RemoveCity(string cityName)
         {
-
+            var city = database.Cities.Include(c => c.WeatherEntries).FirstOrDefault(c => c.name == cityName);
+            if(city!=null)
+            {
+                database.Cities.Remove(city);
+                database.SaveChanges();
+            }
         }
 
     }

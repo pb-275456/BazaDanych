@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BazaDanych.Migrations
 {
     [DbContext(typeof(WeatherContext))]
-    [Migration("20250330190724_InitialCreate")]
+    [Migration("20250403101139_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -50,7 +50,7 @@ namespace BazaDanych.Migrations
                     b.Property<int>("CityId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("date")
                         .HasColumnType("TEXT");
 
                     b.Property<double>("feels_like")
