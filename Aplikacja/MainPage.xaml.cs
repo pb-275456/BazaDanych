@@ -28,7 +28,8 @@ namespace Aplikacja
 
         private async void OnGetWeatherClicked(object sender, EventArgs e)
         {
-            DateTime date = DateTime.Now.Date;
+            DateTime currentDate = DateTime.Now;
+            var date = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, currentDate.Hour, 0, 0);
             var cityName = CityInput.Text;
             if (!validateCityInput(cityName))
             {
@@ -52,7 +53,7 @@ namespace Aplikacja
             }
             
             //jak sa dane/pobierzemy to wyswietlamy
-            var entries = controller.getWeatherForCityDate(cityName, date);
+            var entries = controller.getWeatherToday(cityName, date);
             if (entries.Any())
             {
                 await controller.GetData(cityName);

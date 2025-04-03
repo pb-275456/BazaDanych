@@ -41,9 +41,9 @@ namespace BazaDanych
             return new List<WeatherEntry>();
         }
 
-        public List<WeatherEntry> getWeatherForCityDate(string cityName, DateTime date)
+        public List<WeatherEntry> getWeatherToday(string cityName, DateTime date)
         {
-            var weather = database.WeatherEntries.Include(w => w.City).Where(w => w.City.name == cityName && w.date == date).ToList();
+            var weather = database.WeatherEntries.Include(w => w.City).Where(w => w.City.name == cityName && w.date.Date == date.Date).OrderByDescending(w => w.date).ToList();
 
             return weather;
         }
@@ -59,10 +59,13 @@ namespace BazaDanych
                 database.SaveChanges();
             }
 
+           
+            DateTime currentDate = DateTime.Now;
+    
             var weather = new WeatherEntry
             {
                 CityId = city.Id,
-                date = DateTime.Now.Date,
+                date = new DateTime(currentDate.Year,  currentDate.Month, currentDate.Day, currentDate.Hour, 0, 0),
                 temp = data.main.temp,
                 feels_like = data.main.feels_like,
                 humidity = data.main.humidity,
@@ -75,7 +78,12 @@ namespace BazaDanych
 
         public bool CheckEntryInDatabase(string cityName, DateTime date)
         {
-            return database.WeatherEntries.Any(w => w.City.name == cityName && w.date.Date == date.Date);
+            return database.WeatherEntries.Any(w => w.City.name == cityName && w.date == date);
+        }
+
+        public void RemoveCity()
+        {
+
         }
 
     }
